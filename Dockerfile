@@ -1,16 +1,16 @@
 FROM ubuntu:20.04
 
 ENV ANDROID_HOME /opt/android
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/cmdline-tools/bin
 
 ADD start-default-emulator.sh /opt
 
 RUN mkdir /opt/android
 
 RUN apt update \
-  &&DEBIAN_FRONTEND=noninteractive apt install openjdk-8-jdk wget unzip git -y \
+  &&DEBIAN_FRONTEND=noninteractive apt install openjdk-11-jdk wget unzip git -y \
   && chmod a+x /opt/start-default-emulator.sh \
-  && wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -qO android-sdk.zip \
+  && wget https://dl.google.com/android/repository/commandlinetools-linux-9123335_latest.zip -qO android-sdk.zip \
   && unzip android-sdk.zip -d /opt/android \
   && rm android-sdk.zip \
   && echo "y" | sdkmanager "tools" \
