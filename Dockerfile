@@ -8,14 +8,14 @@ ADD start-default-emulator.sh /opt
 RUN mkdir /opt/android
 
 RUN apt update \
-  &&DEBIAN_FRONTEND=noninteractive apt install openjdk-11-jdk wget unzip git -y \
+  &&DEBIAN_FRONTEND=noninteractive apt install openjdk-8-jdk wget unzip git -y \
   && chmod a+x /opt/start-default-emulator.sh \
   && wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -qO android-sdk.zip \
   && unzip android-sdk.zip -d /opt/android \
   && rm android-sdk.zip \
   && echo "y" | sdkmanager "tools" \
   && echo "y" | sdkmanager "platform-tools" \
-  && echo "y" | sdkmanager "build-tools;29.0.2" \
+  && echo "y" | sdkmanager "build-tools;33.0.1" \
   && echo "y" | sdkmanager "extras;android;m2repository" \
   && echo "y" | sdkmanager "extras;google;m2repository" \
   && echo "y" | sdkmanager "emulator" \
