@@ -13,14 +13,14 @@ RUN apt update \
   && wget https://dl.google.com/android/repository/commandlinetools-linux-9123335_latest.zip -qO android-sdk.zip \
   && unzip android-sdk.zip -d /opt/android \
   && rm android-sdk.zip \
-  && echo "y" | sdkmanager "tools" \
-  && echo "y" | sdkmanager "platform-tools" \
-  && echo "y" | sdkmanager "build-tools;33.0.1" \
-  && echo "y" | sdkmanager "extras;android;m2repository" \
-  && echo "y" | sdkmanager "extras;google;m2repository" \
-  && echo "y" | sdkmanager "emulator" \
-  && echo "y" | sdkmanager "platforms;android-28" \
-  && echo "y" | sdkmanager "system-images;android-28;google_apis;x86" \
-  && echo "y" | sdkmanager --update \
+  && echo "y" | sdkmanager --sdkroot=/opt/android "tools" \
+  && echo "y" | sdkmanager --sdkroot=/opt/android "platform-tools" \
+  && echo "y" | sdkmanager --sdkroot=/opt/android "build-tools;33.0.1" \
+  && echo "y" | sdkmanager --sdkroot=/opt/android "extras;android;m2repository" \
+  && echo "y" | sdkmanager --sdkroot=/opt/android "extras;google;m2repository" \
+  && echo "y" | sdkmanager --sdkroot=/opt/android "emulator" \
+  && echo "y" | sdkmanager --sdkroot=/opt/android "platforms;android-28" \
+  && echo "y" | sdkmanager --sdkroot=/opt/android "system-images;android-28;google_apis;x86" \
+  && echo "y" | sdkmanager --sdkroot=/opt/android --update \
   && echo "no" | avdmanager create avd -n default -k "system-images;android-28;google_apis;x86" -d 17 \
   && rm -rf /var/lib/apt/lists/* 
