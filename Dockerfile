@@ -22,5 +22,9 @@ RUN apt update \
   && echo "y" | sdkmanager --sdk_root=/opt/android "platforms;android-35" \
   && echo "y" | sdkmanager --sdk_root=/opt/android "system-images;android-35;google_apis;x86_64" \
   && echo "y" | sdkmanager --sdk_root=/opt/android --update \
+  && sudo apt-get remove openjdk-17-jdk \
+  && sudo apt-get install openjdk-8-jdk \
   && echo "no" | avdmanager create avd -n default -k "system-images;android-35;google_apis;x86_64" -d 17 \
+  && sudo apt-get remove openjdk-8-jdk \
+  && sudo apt-get install openjdk-17-jdk \
   && rm -rf /var/lib/apt/lists/*
