@@ -10,7 +10,7 @@ RUN mkdir /opt/android
 RUN apt update \
   &&DEBIAN_FRONTEND=noninteractive apt install openjdk-8-jdk wget unzip git -y \
   && chmod a+x /opt/start-default-emulator.sh \
-  && wget https://dl.google.com/android/repository/commandlinetools-linux-9123335_latest.zip -qO android-sdk.zip \
+  && wget https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip -qO android-sdk.zip \
   && unzip android-sdk.zip -d /opt/android \
   && rm android-sdk.zip \
   && echo "y" | sdkmanager --sdk_root=/opt/android "tools" \
