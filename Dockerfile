@@ -21,10 +21,9 @@ RUN apt update \
   && echo "y" | sdkmanager --sdk_root=/opt/android "emulator" \
   && echo "y" | sdkmanager --sdk_root=/opt/android "platforms;android-28" \
   && echo "y" | sdkmanager --sdk_root=/opt/android "platforms;android-29" \
-  && echo "y" | sdkmanager --sdk_root=/opt/android "system-images;android-28;google_apis;x86" \
-   && echo "y" | sdkmanager --sdk_root=/opt/android "system-images;android-35;google_apis;x86" \
+  && echo "y" | sdkmanager --sdk_root=/opt/android "system-images;android-VanillaIceCream;google_apis;x86_64" \
   && echo "y" | sdkmanager --sdk_root=/opt/android --update \
-  && echo "no" | avdmanager create avd -n default -k "system-images;android-35;google_apis;x86" -d 17 \
+  && echo "no" | avdmanager create avd -n default -k "system-images;android-VanillaIceCream;google_apis;x86_64" -d 17 \
   &&DEBIAN_FRONTEND=noninteractive apt remove openjdk-8-jdk -y \
   &&DEBIAN_FRONTEND=noninteractive apt install openjdk-17-jdk -y \
   && rm -rf /var/lib/apt/lists/*
