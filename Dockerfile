@@ -30,6 +30,6 @@ RUN apt update \
   && echo "y" | sdkmanager --sdk_root=/opt/android "platforms;android-35" \
   && echo "y" | sdkmanager --sdk_root=/opt/android "system-images;android-35;google_apis;x86_64" \
   && echo "y" | sdkmanager --sdk_root=/opt/android --update \
-  && sed -ie 's%^CLASSPATH=.*%\0:/opt/android/tools/jaxb_lib/*%' /opt/android/bin/avdmanager
+  && sed -ie 's%^CLASSPATH=.*%\0:/opt/android/tools/jaxb_lib/*%' /opt/android/bin/avdmanager \
   && echo "no" | avdmanager create avd -n default -k "system-images;android-35;google_apis;x86_64" -d 17 \
   && rm -rf /var/lib/apt/lists/*
