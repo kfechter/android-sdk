@@ -8,9 +8,9 @@ ADD start-default-emulator.sh /opt
 RUN mkdir /opt/android
 
 RUN apt update \
-  &&DEBIAN_FRONTEND=noninteractive apt install openjdk-17-jdk wget unzip git -y \
+  &&DEBIAN_FRONTEND=noninteractive apt install openjdk-8-jdk wget unzip git -y \
   && chmod a+x /opt/start-default-emulator.sh \
-  && wget https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip -qO android-sdk.zip \
+  && wget https://dl.google.com/android/repository/commandlinetools-linux-9123335_latest.zip -qO android-sdk.zip \
   && unzip android-sdk.zip -d /opt/android \
   && rm android-sdk.zip \
   && echo "y" | sdkmanager --sdk_root=/opt/android "tools" \
@@ -22,8 +22,6 @@ RUN apt update \
   && echo "y" | sdkmanager --sdk_root=/opt/android "platforms;android-35" \
   && echo "y" | sdkmanager --sdk_root=/opt/android "system-images;android-35;google_apis;x86_64" \
   && echo "y" | sdkmanager --sdk_root=/opt/android --update \
-  &&DEBIAN_FRONTEND=noninteractive apt remove openjdk-17-jdk -y \
-  &&DEBIAN_FRONTEND=noninteractive apt install openjdk-8-jdk -y \
   && echo "no" | avdmanager create avd -n default -k "system-images;android-35;google_apis;x86_64" -d 17 \
   &&DEBIAN_FRONTEND=noninteractive apt remove openjdk-8-jdk -y \
   &&DEBIAN_FRONTEND=noninteractive apt install openjdk-17-jdk -y \
