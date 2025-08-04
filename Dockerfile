@@ -19,8 +19,8 @@ RUN apt update \
   && echo "y" | sdkmanager --sdk_root=/opt/android "extras;android;m2repository" \
   && echo "y" | sdkmanager --sdk_root=/opt/android "extras;google;m2repository" \
   && echo "y" | sdkmanager --sdk_root=/opt/android "emulator" \
-  && echo "y" | sdkmanager --sdk_root=/opt/android "platforms;android-VanillaIceCream" \
-  && echo "y" | sdkmanager --sdk_root=/opt/android "system-images;android-VanillaIceCream;google_apis;x86_64" \
+  && echo "y" | sdkmanager --sdk_root=/opt/android "platforms;android-35" \
+  && echo "y" | sdkmanager --sdk_root=/opt/android "system-images;android-35;google_apis;x86_64" \
   && echo "y" | sdkmanager --sdk_root=/opt/android --update \
-  && echo "no" | avdmanager create avd -n default -k "system-images;android-VanillaIceCream;google_apis;x86_64" -d 17 \
+  && echo "no" | avdmanager create avd -n default -k "system-images;android-35;google_apis;x86_64" -d 17 \
   && rm -rf /var/lib/apt/lists/*
